@@ -47,7 +47,7 @@ func main() {
 	if err != nil {
 		log.Printf("Failed to set role: %v", err)
 	} else {
-		fmt.Println("Successfully executed 'SET ROLE default'")
+		fmt.Println("✅ Successfully executed 'SET ROLE default'")
 	}
 
 	// Try to verify the role was set
@@ -60,7 +60,7 @@ func main() {
 			if err := rows.Scan(&user); err != nil {
 				log.Printf("Failed to scan user: %v", err)
 			} else {
-				fmt.Printf("Current user: %s\n", user)
+				fmt.Printf("✅ Current user: %s\n", user)
 			}
 		}
 		rows.Close()
@@ -74,7 +74,7 @@ func main() {
 	if err != nil {
 		log.Printf("Failed to set max_memory_usage: %v", err)
 	} else {
-		fmt.Println("Set max_memory_usage = 1000000")
+		fmt.Println("✅ Set max_memory_usage = 1000000")
 	}
 
 	// Verify the setting (this might not persist due to connection pooling)
@@ -87,7 +87,7 @@ func main() {
 			if err := rows.Scan(&value); err != nil {
 				log.Printf("Failed to scan setting value: %v", err)
 			} else {
-				fmt.Printf("Current setting: max_memory_usage = %s\n", value)
+				fmt.Printf("✅ Current setting: max_memory_usage = %s\n", value)
 			}
 		}
 		rows.Close()
@@ -107,7 +107,7 @@ func main() {
 	if err != nil {
 		log.Printf("Failed to create table: %v", err)
 	} else {
-		fmt.Println("Created test table")
+		fmt.Println("✅ Created test table")
 	}
 
 	// Insert data
@@ -133,7 +133,7 @@ func main() {
 			if err != nil {
 				log.Printf("Failed to send batch: %v", err)
 			} else {
-				fmt.Println("Inserted test data")
+				fmt.Println("✅ Inserted test data")
 			}
 		}
 	}
@@ -164,7 +164,7 @@ func main() {
 	if err != nil {
 		log.Printf("Failed to drop test table: %v", err)
 	} else {
-		fmt.Println("Cleaned up test table")
+		fmt.Println("✅ Cleaned up test table")
 	}
 
 	// Test 4: What the new Session API would provide
@@ -179,16 +179,16 @@ func main() {
 	fmt.Println("5. Session cleanup: session.Close()")
 
 	fmt.Println("\n=== Current Limitations ===")
-	fmt.Println("No way to maintain connection state across multiple operations")
-	fmt.Println("SET ROLE doesn't persist to subsequent queries due to connection pooling")
-	fmt.Println("Session settings may not persist between operations")
-	fmt.Println("No way to acquire a stateful connection for multiple operations")
+	fmt.Println("❌ No way to maintain connection state across multiple operations")
+	fmt.Println("❌ SET ROLE doesn't persist to subsequent queries due to connection pooling")
+	fmt.Println("❌ Session settings may not persist between operations")
+	fmt.Println("❌ No way to acquire a stateful connection for multiple operations")
 
 	fmt.Println("\n=== Proposed Solution ===")
-	fmt.Println("New Session API would provide stateful connections")
-	fmt.Println("SET ROLE would persist across all session operations")
-	fmt.Println("Session settings would be maintained")
-	fmt.Println("Proper resource management with session.Close()")
+	fmt.Println("✅ New Session API would provide stateful connections")
+	fmt.Println("✅ SET ROLE would persist across all session operations")
+	fmt.Println("✅ Session settings would be maintained")
+	fmt.Println("✅ Proper resource management with session.Close()")
 
 	fmt.Println("\n=== Test Complete ===")
 	fmt.Println("This demonstrates the current behavior and the need for the Session API!")

@@ -63,7 +63,7 @@ Cleaned up test table
 Correctly got error for closed session: clickhouse: session is closed
 
 === Test Complete ===
-If you see success messages, the session functionality is working correctly!
+The session functionality is working correctly!
 ```
 
 ## Troubleshooting
